@@ -53,6 +53,9 @@
           .attr("transform",
             `translate(${margins.left},${height - margins.bottom})`)
           .call(xAxisGenerator);
+        // Move the month labels to the center of their span.
+        d3.selectAll('#xAxis g text')
+          .attr("dx", '16%');
       }
 
       function showData(){
