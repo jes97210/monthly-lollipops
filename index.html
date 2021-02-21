@@ -45,7 +45,8 @@
           .range([0, widthGraphing]);
         let xAxisGenerator = d3.axisBottom(xScale)
           .ticks(d3.timeMonth.every(1))
-          .tickFormat(d3.timeFormat("%B (%Y)"));
+          .tickFormat(d3.timeFormat("%B (%Y)"))
+          .tickSize(-heightGraphing);
         let xAxis = d3.select('#threeMonthView')
           .append('g')
           .attr("id", "xAxis")
