@@ -43,17 +43,30 @@
         let xScale = d3.scaleTime()
           .domain(getThreeMonthDomain(new Date(Date.now())))
           .range([0, widthGraphing]);
+        // Add the grid lines for days.
+        let xAxisGridGenerator = d3.axisBottom(xScale)
+          .ticks(d3.timeDay.every(1))
+          .tickFormat("")
+          .tickSize(-heightGraphing);
+        d3.select('#threeMonthView')
+          .append('g')
+          .attr("class", "xAxisGrid")
+          .attr("transform",
+            `translate(${margins.left},${height - margins.bottom})`)
+          .call(xAxisGridGenerator);
+        // Add the ticks and labels for months.
         let xAxisGenerator = d3.axisBottom(xScale)
           .ticks(d3.timeMonth.every(1))
           .tickFormat(d3.timeFormat("%B (%Y)"))
           .tickSize(-heightGraphing);
-        let xAxis = d3.select('#threeMonthView')
+        d3.select('#threeMonthView')
           .append('g')
           .attr("id", "xAxis")
           .attr("transform",
             `translate(${margins.left},${height - margins.bottom})`)
           .call(xAxisGenerator);
         // Move the month labels to the center of their span.
+        // 16% means the label moves around 1/6th to the right.
         d3.selectAll('#xAxis g text')
           .attr("dx", '16%');
       }
