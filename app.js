@@ -1,11 +1,6 @@
 function parseFile(filename){
-    d3.csv(filename, function (data) {
-        return data;
-    }).then( function (data) {
-    // do something with data
-        console.log(data);
-    });
-}
+    d3.csv(filename);
+};
 
 let submitFileNameBtn = document.getElementById('submitFileName');
 submitFileNameBtn.addEventListener('click', function getFileInput() {
