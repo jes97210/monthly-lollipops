@@ -1,9 +1,8 @@
 function parseFile(filename){
     d3.csv(filename);
-};
+}
 
-let submitFileNameBtn = document.getElementById('submitFileName');
-submitFileNameBtn.addEventListener('click', function getFileInput() {
+d3.select('#submitFileName').on('click', function () {
     let filename = document.getElementById("fileInput").value;
     parseFile(filename);
-}, false);
+});
